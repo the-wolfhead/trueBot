@@ -15,10 +15,6 @@ def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi, how are you doing and how may I help you ?')
 
-
-
-@bot.message_handler(content_types=['text'])
-
 def first_question_step(bot, message):
     msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
     bot.register_next_step_handler(msg, second_step)
