@@ -22,15 +22,12 @@ def echo(update, context):
         {
             update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
         }
-    else
+    else:
         {
             ...
         }
 
-Bot.SendChatAction(update.Message.Chat.Id, ChatAction.Typing);
-Bot.SendTextMessage(update.Message.Chat.Id, "Type your username, please");
 
-// Checking incoming messages for replies
 
 
 def error(update, context):
