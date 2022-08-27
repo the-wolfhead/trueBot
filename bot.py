@@ -27,7 +27,7 @@ def ask_account(update, context: CallbackContext):
      chat_id = update.message.chat_id
      name = update.message.text # now we got the name
      context.user_data["name"] = name # to use it later (in next func)
-     update.message.reply_text(chat_id , text = f"Which wallet account did you use to connect?")
+     update.message.reply_text("Which wallet account did you use to connect?")
      return TWO
 def first_question_step(message):
     msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
