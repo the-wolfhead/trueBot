@@ -24,7 +24,7 @@ def start(update, context: CallbackContext):
      bot.send_message(chat_id , text = "Hi, how are you doing and how may I help you ?")
      return ONE
 
-def ask_account(update: Update, context: CallbackContext):
+def ask_account(update, context: CallbackContext):
      chat_id = update.message.chat_id
      name = update.message.text # now we got the name
      context.user_data["name"] = name # to use it later (in next func)
