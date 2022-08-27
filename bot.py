@@ -20,7 +20,6 @@ ONE , TWO = range(2)
 
 
 def start(update, context: CallbackContext):
-     chat_id = update.message.chat_id
      bot.send_message(chat_id , text = "Hi, how are you doing and how may I help you ?")
      return ONE
 
