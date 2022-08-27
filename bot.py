@@ -20,7 +20,7 @@ ONE , TWO = range(2)
 
 
 def start(update, context: CallbackContext):
-     update.reply_message("Hi, how are you doing and how may I help you ?")
+     update.message.reply_text("Hi, how are you doing and how may I help you ?")
      return ONE
 
 def ask_account(update, context: CallbackContext):
