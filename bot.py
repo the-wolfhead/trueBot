@@ -1,4 +1,6 @@
 import logging
+
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import telebot
 from telebot import types
 import os
@@ -35,10 +37,10 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    bot = telebot.TeleBot(TOKEN)
+    updater = Updater("5751562706:AAHP1bVDHWWV_2smAceLajMp-UI6ApIPTIE", use_context=True)
 
     # Get the dispatcher to register handlers
-    dp = bot.dispatcher
+    dp = updater.dispatcher
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
@@ -51,15 +53,15 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    bot.start_webhook(listen="0.0.0.0", 
+    updater.start_webhook(listen="0.0.0.0", 
                           port=int(PORT),
                           url_path=TOKEN)
-    bot.bot.setWebhook('https://thewolheadstelebot.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook('https://thewolheadstelebot.herokuapp.com/' + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    bot.idle()
+    updater.idle()
 
 if __name__ == '__main__':
 
