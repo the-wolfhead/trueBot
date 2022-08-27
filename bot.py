@@ -1,5 +1,5 @@
 import logging
-from telegram import Bot
+from telegram import Bot, Update
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, ConversationHandler
 import telebot
@@ -19,11 +19,11 @@ ONE , TWO , THREE= range(3)
 
 
 
-def start(update, context: CallbackContext):
+def start(update: Update, context: CallbackContext):
      update.message.reply_text("Hi, how are you doing and how may I help you ?")
      
 
-def ask_account(update, context: CallbackContext):
+def ask_account(update: Update, context: CallbackContext):
      chat_id = update.message.chat_id
      name = update.message.text # now we got the name
      context.user_data["name"] = name # to use it later (in next func)
@@ -36,7 +36,7 @@ def first_question_step(update, context: CallbackContext):
     
     return TWO
 
-def cancel(update, context: CallbackContext):
+def cancel(update: Update, context: CallbackContext):
      chat_id = update.message.chat_id
      bot.send_message(chat_id , text = "process canceled !")
      return ConversationHandler.END
@@ -71,7 +71,8 @@ def main():
     
 
     # on noncommand i.e message - echo the message on Telegram
-   
+    dp.add_handler(MessageHandler(Filters.text, ask_account))
+    dp.add_handler(MessageHandler(Filters.text, first_question_step))
     dp.add_handler(CH)
 
     # log all errors
