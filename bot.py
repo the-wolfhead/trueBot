@@ -40,8 +40,8 @@ def second_step(message):
 
 
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
-     states = {ONE : [MessageHandler(Filters.text , got_complaint)],
-     TWO : [MessageHandler(Filters.text , got_account_name)]
+     states = {ONE : [MessageHandler(Filters.text , first_question_step)],
+     TWO : [MessageHandler(Filters.text , second_step)]
      },
      fallbacks = [MessageHandler(Filters.regex('cancel'), cancel)],
      )
