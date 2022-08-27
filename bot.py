@@ -39,7 +39,7 @@ def second_step(message):
 
 
 
-CH = ConversationHandler (
+CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
      states = {ONE : [MessageHandler(Filters.text , got_complaint)],
      TWO : [MessageHandler(Filters.text , got_account_name)]
      },
@@ -60,8 +60,7 @@ def main():
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
+   
     
 
     # on noncommand i.e message - echo the message on Telegram
