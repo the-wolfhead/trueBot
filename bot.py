@@ -1,7 +1,7 @@
 import logging
 from telegram import Bot
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, Update
 import telebot
 from telebot import types
 import os
@@ -15,14 +15,22 @@ logger = logging.getLogger(__name__)
 TOKEN = '5751562706:AAHP1bVDHWWV_2smAceLajMp-UI6ApIPTIE'
 
 bot = telebot.TeleBot('TOKEN')
+ONE , TWO = range(2)
 
-def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi, how are you doing and how may I help you ?')
 
-@bot.message_handler(content_types=['text'])
 
-def first_question_step( message):
+def start(update, context: CallbackContext):
+     chat_id = update.message.chat_id
+     bot.send_message(chat_id , text = "Hi, how are you doing and how may I help you ?")
+     return ONE
+
+def ask_account(update: Update, context: CallbackContext):
+     chat_id = update.message.chat_id
+     name = update.message.text # now we got the name
+     context.user_data["name"] = name # to use it later (in next func)
+     bot.send_message(chat_id , text = f"Which wallet account did you use to connect?")
+     return TWO
+def first_question_step(message):
     msg = bot.send_message(message.chat.id, 'Which wallet account did you use to connect?')
     bot.register_next_step_handler(msg, second_step)
 
