@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 TOKEN = '5751562706:AAHP1bVDHWWV_2smAceLajMp-UI6ApIPTIE'
 
 bot = telebot.TeleBot('TOKEN')
-ONE , TWO = range(2)
+ONE , TWO , THREE= range(3)
 
 
 
@@ -32,6 +32,7 @@ def ask_account(update, context: CallbackContext):
 def first_question_step(message):
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
     bot.register_next_step_handler(msg, second_step)
+    return THREE
 
 def cancel(update, context: CallbackContext):
      chat_id = update.message.chat_id
@@ -45,8 +46,9 @@ def second_step(message):
 
 
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
-     states = {ONE : [MessageHandler(Filters.text , first_question_step)],
-     TWO : [MessageHandler(Filters.text , second_step)]
+     states = {ONE : [MessageHandler(Filters.text , ask_account)],
+     TWO : [MessageHandler(Filters.text , first_question_step)],
+     THREE : [MessageHandler(Filters.text , second_step)]
      },
      fallbacks = [MessageHandler(Filters.regex('cancel'), cancel)],
      )
