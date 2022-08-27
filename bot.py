@@ -38,7 +38,7 @@ def main():
     bot = telebot.TeleBot(TOKEN)
 
     # Get the dispatcher to register handlers
-    dp = updater.dispatcher
+    dp = bot.dispatcher
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
@@ -51,15 +51,15 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    updater.start_webhook(listen="0.0.0.0", 
+    bot.start_webhook(listen="0.0.0.0", 
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://thewolheadstelebot.herokuapp.com/' + TOKEN)
+    bot.bot.setWebhook('https://thewolheadstelebot.herokuapp.com/' + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    updater.idle()
+    bot.idle()
 
 if __name__ == '__main__':
 
