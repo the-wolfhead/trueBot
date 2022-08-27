@@ -1,7 +1,7 @@
 import logging
 from telegram import Bot
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, ConversationHandler
 import telebot
 from telebot import types
 import os
@@ -39,7 +39,12 @@ def second_step(message):
 
 
 
-
+CH = ConversationHandler (entry_points = [CommandHandler("register", register)],
+     states = {ONE : [MessageHandler(Filters.text , got_complaint)],
+     TWO : [MessageHandler(Filters.text , got_account_name)]
+     },
+     fallbacks = [MessageHandler(Filters.regex('cancel'), cancel)],
+     )
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -57,10 +62,12 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, ask_account))
     dp.add_handler(MessageHandler(Filters.text, first_question_step))
+    dp.add_handler(CH)
 
     # log all errors
     dp.add_error_handler(error)
