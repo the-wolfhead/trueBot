@@ -44,7 +44,7 @@ def second_step(message):
 
 
 
-CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
+CH = ConversationHandler (
      states = {ONE : [MessageHandler(Filters.text , first_question_step)],
      TWO : [MessageHandler(Filters.text , second_step)]
      },
