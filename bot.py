@@ -39,7 +39,7 @@ def second_step(message):
 
 
 
-CH = ConversationHandler (entry_points = [CommandHandler("register", register)],
+CH = ConversationHandler (
      states = {ONE : [MessageHandler(Filters.text , got_complaint)],
      TWO : [MessageHandler(Filters.text , got_account_name)]
      },
